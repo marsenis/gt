@@ -1,0 +1,61 @@
+% --- To be compiled with XeLaTeX ---
+% ---      Encoding: UTF-8        ---
+
+\documentclass[a4paper, oneside, 11pt]{article}
+
+%fontspec package provides a configurable interface for font selection, and allows complex font choices to be named and later reused. It's needed for XeLaTeX
+\usepackage[cm-default]{fontspec}
+
+% Unicode support
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Default words and phrases in Greek (e.g. 'Περίληψη' instead of 'Abstract'). Also contains hyphenation rules for Greek Language
+\usepackage{xgreek}
+
+% Mathematical fonts, theorems etc.
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% Default page layout for consuming a larger portion of the page.
+\usepackage{fullpage}
+
+% Greek fonts (Computer Modern)
+\setmainfont[Mapping=tex-text]{CMU Serif}
+
+% Auxiliary commands
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+\input{title.tex}
+
+\section{Βαθμοί, κύκλοι, μονοπάτια}
+
+\begin{enumerate}
+\item[1.9 ($\star$)]
+   Για κάθε θετικό ακέραιο $\alpha$ και για κάθε γράφημα $G$, το $V(G)$
+   περιέχει περισσότερες από $\left( 1-\frac1\alpha \right) \cdot n(G)$
+   κορυφές βαθμού αυστηρά μικρότερου του $2\alpha\delta^*(G)$.
+
+   \begin{proof}
+      μπλα μπλα...
+   \end{proof}
+
+\item[1.10 ($\star\star$)]
+   Κάθε γράφημα $G$ με τουλάχιστον 2 κορυφές και
+   $\epsilon(G) \geq 2$, έχει περιφέρεια το πολύ $2 \cdot \log_2 (n)$.
+
+   \begin{proof}
+      μπλα μπλα..
+   \end{proof}
+\end{enumerate}
+
+\section{Άκυκλα γραφήματα}
+\section{Συνεκτικότητα}
+\section{Εμβαπτίσεις}
+\section{Δομές σε γραφήματα}
+\section{Χρωματισμοί και άλλα}
+
+\end{document}
