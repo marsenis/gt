@@ -127,22 +127,42 @@
 
       Ισχύει όμως:
 
-      \[ 2m(G) = \sum_{u \in V(G)} d(u) \geq
-         \sum_{u \in V(G): d(u) \geq 2\alpha\delta*(G)} d(u)
-         \geq \frac1\alpha n(G) \cdot 2\alpha\delta*(G)
-         = 2n(G)\delta^*(G) \]
+      \begin{equation}
+         \label{eq1.9.1}
+         2m(G) = \sum_{u \in V(G)} d(u) \geq
+         \sum_{u \in V(G): d(u) \geq 2\alpha\delta^*(G)} d(u)
+         \geq \frac1\alpha n(G) \cdot 2\alpha\delta^*(G)
+         = 2n(G)\delta^*(G)
+      \end{equation}
 
       \[ m(G) \geq n(G) \cdot \delta^*(G) \Leftrightarrow
          \epsilon(G) \geq \delta^*(G) \]
 
       Από το Πόρισμα 3.1 των σημειώσεων του μαθήματος γνωρίζουμε ότι
-      $\delta^*(G) \geq \epsilon(G)$, συνεπώς θα έχουμε:
+      $\delta^*(G) \geq \max \{ \epsilon(G), \delta(G) \}$
+      συνεπώς θα έχουμε:
 
       \[ \epsilon(G) = \delta^*(G) \]
 
-      TODO: Εδώ καταλήγουμε σε άτοπο γιατί αν ισχύει ισότητα τότε οι
-      παραπάνω ανισότητες είναι αυστηρές και αυτό δεν μπορεί να ισχύει
-      $[ \ldots ]$
+      Άρα οι ανισότητες στη σχέση \ref{eq1.9.1} θα πρέπει να είναι ισχυρές,
+      δηλαδή:
+
+      \[ 
+         \sum_{u \in V(G)} d(u) =
+         \sum_{u \in V(G): d(u) \geq 2\alpha\delta^*(G)} d(u)
+         = \frac1\alpha n(G) \cdot 2\alpha\delta^*(G)
+      \]
+
+      Δηλαδή οι μόνες κορυφές με $d(u) < 2\alpha \delta^*(G)$
+      θα πρέπει να είναι απομονωμένες και επιπλέον οι υπόλοιπες κορυφές
+      να έχουν βαθμό ακριβώς $d(u) = 2\alpha\delta^*(G)$ και να είναι
+      ακριβώς $\frac1\alpha n(G)$ σε πλήθος. Τότε όμως, αν αφαιρέσουμε
+      τις απομονωμένες κορυφές θα μείνει ένα $(2\alpha\delta^*(G))$-κανονικό
+      γράφημα και έτσι $\delta^*(G) \geq 2 \alpha \delta^*(G)
+      \Leftrightarrow \alpha \leq \frac12$.
+
+      Αυτό όμως είναι άτοπο γιατί υποθέσαμε ότι ένα σύνολο κορυφών
+      έχει πληθάριθμο $\leq \left( 1 - \frac1\alpha \right) n(G) < 0$.
 
    \end{proof}
 
@@ -173,6 +193,38 @@
 \section{Άκυκλα γραφήματα}
 
 \begin{enumerate}
+   \item[2.9 $(\star)$]
+      Έστω $G = T_1 \cup T_2$ όπου $T_1$ και $T_2$ είναι δέντρα. Δείξτε
+      ότι $\exists c \in \mathbb{N} : \delta^*(G) \leq c$ και βρέστε
+      την μικρότερη σταθερά $c$ για την οποία $\delta^*(G) \leq c$ για κάθε
+      γράφημα που είναι ένωση δύο δέντρων
+
+      \begin{proof}
+         Αρχικά θα δείξουμε ότι $c \leq 3$. Έστω ότι ήταν $c \geq 4$
+         δηλαδή έστω ότι υπήρχαν δέντρα $T_1, T_2$ τέτοια ώστε
+         το $G = T_1 \cup T_2$ να περιέχει υπογράφημα $H$ με
+         $\delta(H) \geq 4$.
+
+         Τότε $m(H) \geq \frac{\delta(H) \cdot n(H)}{2} = 2n(H)$.
+
+         Για το $H$ έχουμε $H = F_1 \cup F_2$ όπου $F_1 \subseteq_{\text{υπ}}
+         T_1, F_2 \subseteq_{\text{υπ}} T2$ δηλαδή τα $F_1, F_2$ είναι δάση
+         και έτσι $m(F_1) \leq n(F_1) -1, m(F_2) \leq n(F_2) - 1$.
+         Έτσι $m(H) \leq m(F_1) + m(F_2) \leq n(F_1) + n(F_2) - 2$.
+
+         Όμως $n(F_1) + n(F_2) = |V(F_1) \cup V(F_2)| + |V(F_1) \cap V(F_2)|
+         \leq 2|V(F_1) \cup V(F_2)| = 2n(H)$.
+
+         Συνεπώς $m(H) \leq 2n(H) -2$. Άτοπο γιατί πριν δείξαμε ότι
+         $m(H) \geq 2n(H)$.
+
+         Για να δείξουμε τώρα ότι $c = 4$ μπορούμε να δούμε το παράδειγμα
+         στο παρακάτω σχήμα όπου έχουμε δύο δέντρα $T_1, T_2$ με 4 κορυφές
+         το καθένα για τα οποία ισχύει $\delta^*(T_1 \cup T_2) = 3$.
+
+         TODO: Add Σχήμα
+      \end{proof}
+
    \item[2.10 $(\star)$]
       Σε κάθε δέντρο με $n$ κορυφές και διάμετρο τουλάχιστον
       $2k - 3$ υπάρχουν τουλάχιστον $n-k$ διαφορετικά μονοπάτια
