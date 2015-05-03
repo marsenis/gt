@@ -27,6 +27,8 @@
 % Auxiliary commands
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
+\usepackage{tikz}
+
 \newtheorem{thm}{Θεώρημα}
 \newtheorem{lm}[thm]{Λήμμα}
 
@@ -219,10 +221,31 @@
          $m(H) \geq 2n(H)$.
 
          Για να δείξουμε τώρα ότι $c = 4$ μπορούμε να δούμε το παράδειγμα
-         στο παρακάτω σχήμα όπου έχουμε δύο δέντρα $T_1, T_2$ με 4 κορυφές
+         στο Σχήμα \ref{fig2.10.1} όπου έχουμε δύο δέντρα $T_1, T_2$ με 4 κορυφές
          το καθένα για τα οποία ισχύει $\delta^*(T_1 \cup T_2) = 3$.
 
-         TODO: Add Σχήμα
+         \begin{figure}
+         \begin{center}
+            \begin{tikzpicture}
+               [nsblack/.style={scale=0.8,circle,draw=black!50,fill=black!10,thick}];
+
+               \node[nsblack] (4) at (0, 0) {4};
+               \node[nsblack] (3) at (3, 0) {3};
+               \node[nsblack] (2) at (3, 3) {2};
+               \node[nsblack] (1) at (0, 3) {1};
+
+               \draw[black] [-] (1) -- (2);
+               \draw[black] [-] (2) -- (3);
+               \draw[black] [-] (3) -- (4);
+               \draw[red] [-] (1) -- (3);
+               \draw[red] [-] (2) -- (4);
+               \draw[red] [-] (1) -- (4);
+            \end{tikzpicture}
+         \caption{Οι μαύρες ακμές ανήκουν στο $T_1$ και οι κόκκινες στο
+                  $T_2$.}
+         \label{fig2.10.1}
+         \end{center}
+         \end{figure}
       \end{proof}
 
    \item[2.10 $(\star)$]
@@ -231,8 +254,6 @@
       μήκους $k$.
 
       \begin{proof}
-
-      *** Χρειάζεται Σχήμα (και ίσως αναδιατύπωση..) ***
 
       Έστω $u, v$ δύο αντιδιαμετρικοί κόμβοι με $d(u, v) = \text{diam}(u, v)$
       και έστω $P$ το μονοπάτι που τους ενώνει.
