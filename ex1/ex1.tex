@@ -336,6 +336,31 @@
 
       Σε κάθε περίπτωση λοιπόν τα $n-k$ μονοπάτια που δημιουργήσαμε
       είναι όλα διαφορετικά μεταξύ τους.
+
+      \begin{figure}
+      \begin{center}
+      \begin{tikzpicture}
+         [black/.style={scale=0.7,circle,draw=black!50,fill=black!20,thick}];
+         \node[black] (U) at (0, 0) {u};
+         \node[black] (W) at (2, 0) {w};
+         \node[black] (V) at (5, 0) {v};
+         \node[black] (X1) at (2.5, 1) {$x_1$};
+         \node[black] (X2) at (1.5, -1) {$x_2$};
+
+         \draw [-] (U) .. controls (0.66, 0.5) and (1.2, -0.5) .. (W);
+         \draw [-] (W) .. controls (3, 0.5) and (4, -0.5) .. (V);
+         \draw [-] (X1) .. controls (3.2, 0.7) ..  (3.5, 0);
+         \draw [-] (X2) .. controls (1.05, -0.3) .. (1, 0);
+
+         \draw (1, 0) ellipse [x radius=1.8cm, y radius=0.5cm];
+      \end{tikzpicture}
+      \end{center}
+      \caption{Οι καμπύλες γραμμές αναπαριστούν μονοπάτια. Η κορυφή $x_1$
+      ανήκει στην περίπτωση (α') και η $x_2$ στην περίπτωση (β'). Σε κύκλο
+      βρίσκονται οι κορυφές του μονοπατιού $P(u, w)$ από τις οποίες \emph{δεν}
+      δημιουργούμε μονοπάτια.}
+      \end{figure}
+
       \end{proof}
 \end{enumerate}
 
@@ -715,9 +740,11 @@ $\gamma(G) = \sum {\gamma(G_i)}$.
 
       Όπου το 4ο βήμα προκύπτει από την ανισότητα Cauchy-Schwarz:
 
-      \[ d(u_1)\cdot1 + d(u_2)\cdot2 + \ldots + d(u_n)\cdot1
-         \leq (d^2(u_1) + \ldots + d^2(u_n)) \cdot (1 + \ldots + 1)
-         = (d^2(u_1) + \ldots + d^2(u_n)) \cdot n \]
+      \begin{align*}
+         d(u_1)\cdot1 + d(u_2)\cdot2 + \ldots + d(u_n)\cdot1
+         &\leq (d^2(u_1) + \ldots + d^2(u_n)) \cdot (1 + \ldots + 1)\\
+         &= (d^2(u_1) + \ldots + d^2(u_n)) \cdot n
+      \end{align*}
 
       \end{proof}
 
