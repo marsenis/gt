@@ -1,0 +1,99 @@
+% --- To be compiled with XeLaTeX ---
+% ---      Encoding: UTF-8        ---
+
+\documentclass[a4paper, oneside, 11pt]{article}
+
+%fontspec package provides a configurable interface for font selection, and allows complex font choices to be named and later reused. It's needed for XeLaTeX
+\usepackage[cm-default]{fontspec}
+
+% Unicode support
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Default words and phrases in Greek (e.g. 'Περίληψη' instead of 'Abstract'). Also contains hyphenation rules for Greek Language
+\usepackage{xgreek}
+
+% Mathematical fonts, theorems etc.
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% Default page layout for consuming a larger portion of the page.
+\usepackage{fullpage}
+
+% Greek fonts (Computer Modern)
+\setmainfont[Mapping=tex-text]{CMU Serif}
+
+% Auxiliary commands
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newtheorem{thm}{Θεώρημα}
+\newtheorem{lm}[thm]{Λήμμα}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Ορισμός}
+
+\begin{document}
+
+\input{title.tex}
+
+\begin{enumerate}
+
+\item[1.]
+   Σε ένα $G(n, p)$ η πιθανότητα μιας κορυφής να έχει βαθμό $k$ είναι
+   ${n-1 \choose k} p^k (1-p)^{n-1-k}$. Δείξτε ότι ο μέσος βαθμός είναι
+   $(n-1)p$ με απευθείας υπολογισμό, δηλαδή χωρίς να χρησιμοποιήσετε τη
+   γραμμικότητα της μέσης τιμής.
+
+   \begin{proof}
+   \end{proof}
+
+\item[2.]
+   Δείξτε ότι το τυχαίο γράφημα $G(n, p)$ με $p = n^{-0.7}$ δεν έχει σχεδόν
+   σίγουρα 4-κλίκα για αρκετά μεγάλα $n$.
+
+   \begin{proof}
+   \end{proof}
+
+\item[3. ($\star$)]
+   Θεωρήστε το παρακάτω τυχαίο κατευθονόμενο γράφημα. Για κάθε κορυφή $v$
+   επιλέγουμε ομοιόμορφα τυχαία μια κορυφή $u$ και τοποθετούμε την ακμή
+   $v \rightarrow u$. Κάθε κορυφή έχει μόνο μια εξερχόμενη ακμή και μπορεί να
+   υπάρχουν θηλιές. Έστω $r(v)$ ο αριθμός των κορυφών στις οποίες μπορούμε να
+   φτάσουμε από την $v$.
+
+   \begin{itemize}
+      \item Για $k = 1, \ldots, n$ ποιά η πιθανότητα $r(v) = k$. Η πιθανότητα θα
+            έχει μορφή γινομένου.
+      \item Δείξτε ότι για μία κορυφή $v$, $Pr[ r(v) \leq \sqrt{n} / 10 ]
+            \leq 1/3$ και $Pr [ r(v) \geq 10\sqrt{n} ] \leq 1/3$.
+   \end{itemize}
+
+   \begin{proof}
+   \end{proof}
+
+\item[4. ($\star$)]
+   Θεωρήστε το τυχαίο γράφημα $G(n, p)$ με $p = 6.6/n$. Δείξτε ότι το γράφημα
+   είναι σχεδόν σίγουρα μή 3-χρωματίσιμο για αρκετά μεγάλα $n$.
+
+   \begin{proof}
+   \end{proof}
+
+\item[5. ($\star$)]
+   Θεωρήστε το παρακάτω τυχαίο γράφημα με $n$ κορυφές. Κάθε κορυφή διαλέγει
+   ομοιόμορφα τυχαία 2 κορυφές και τοποθετούμε μη-κατευθυνόμενες ακμές προς
+   αυτές. Η τυχαία επιλογή γίνεται με επανάληψη και μπορεί μια κορυφή $v$ να
+   επιλέξει και τον εαυτό της στην οποία περίπτωση παραλείπουμε αυτή τη θηλιά.
+   Παρατηρούμε ότι οι ακμές θα είναι περίπου $2n$ αλλά μπορεί κάποιες κορυφές να
+   έχουν βαθμό μικρότερο από $2$ αν επέλεξαν τον εαυτό τους ή την ίδια κορυφή
+   δύο φορές. Μπορεί επίσης κάποιες κορυφές να έχουν βαθμό αρκετά μεγαλύτερο από
+   $4$ αν άλλες κορυφές έτυχε να τις επιλέξουν.
+
+   Δείξτε ότι το γράφημα είναι σχεδόν σίγουρα συνεκτικό για αρκετά μεγάλα $n$.
+
+   \begin{proof}
+   \end{proof}
+
+\end{enumerate}
+
+\end{document}
