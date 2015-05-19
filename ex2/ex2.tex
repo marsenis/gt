@@ -185,6 +185,44 @@
             %   \cdot 1 = \frac{1}{100} < \frac{1}{3}\\
       \end{align*}
 
+Τώρα, για την άλλη ανισότητα, έχουμε ότι:
+      \begin{align*}
+	&S_1 = 
+\sum_{k=1}^{\sqrt{n}} \frac{k}{n} \prod_{i=1}^{k-1} (1-\frac{i}{n}) \geq \sum_{k=1}^{\sqrt{n}} \frac{k}{n} (1-\sum_{i=1}^{k-1} \frac{i}{n}) \geq \sum_{k=1}^{\sqrt{n}} \frac{k}{n} (1-\frac{k^2}{2n})
+	= \sum_{k=1}^{\sqrt{n}} \frac{k}{n} - \sum_{k=1}^{\sqrt{n}} \frac{k^3}{2n^2} \\
+        &= \frac{\sqrt{n}(\sqrt{n}+1)}{2n} - \frac{n^2 + 2n^{1.5}+n}{8n^2} \geq 0.34875
+      \end{align*}
+Αυτό διότι για $n < 100$ η ανισότητα είναι προφανής.
+Επίσης, ορίζουμε τα παρακάτω:
+      \begin{align*}
+	P_1 = \prod_{i=1}^{\sqrt{n}} (1-\frac{i}{n}) \geq 1 - \sum_{i=1}^{\sqrt{n}} \frac{i}{n} = 1 - \frac{1}{2} + \frac{1}{2\sqrt{n}} \geq \frac{1}{2}
+      \end{align*}
+Για $z = 4,5,6,7,8,9$, ορίζουμε:
+      \begin{align*}
+	P_z = \prod_{i=\frac{z}{4} \sqrt{n}+1}^{\frac{z+1}{4} \sqrt{n} - 1} (1 - \frac{i}{n}) \geq (1 - \frac{z+1}{z\cdot \sqrt{n}})^{\frac{\sqrt{n}}{4}-1} \geq^* e^{-(z+1)/16}
+      \end{align*}
+(*): Η συνάρτηση $f(x)=(1-a/x)^x$ είναι αύξουσα και συνεπώς είναι παντού μικρότερη ή ίση από το όριό της στο άπειρο.
+
+Τώρα, ορίζουμε για $z=4,5,6,7,8,9$:
+      \begin{align*}
+	S_z = \sum_{k=\frac{z}{4}\sqrt{n} + 1}^{\frac{z+1}{4} \sqrt{n}} \frac{k}{n} \prod_{i=1}^{k-1} (1 - \frac{i}{n}) \geq \frac{\frac{z}{4}\sqrt{n}}{n} \cdot \frac{\sqrt{n}}{4} \cdot 
+	\prod_{i=1}^{\frac{z+1}{4} \sqrt{n} - 1} (1 - \frac{i}{n})
+      \end{align*}
+Έχουμε, λοιπόν:
+      \begin{align*}
+	&S_4 \geq \frac{4}{16} \cdot P_1 \cdot P_4 \geq \frac{4}{32} e^{-5/16} \geq 0.091\\
+	&S_5 \geq \frac{5}{16} \cdot P_1 \cdot P_4 \cdot P_5 \geq \frac{5}{32} e^{-11/16} \geq 0.0785\\
+	&S_6 \geq \frac{6}{16} \cdot P_1 \cdot P_4 \cdot P_5 \cdot P_6 \geq \frac{6}{32} e^{-18/16} \geq 0.0608\\
+	&S_7 \geq \frac{7}{16} \cdot P_1 \cdot P_4 \cdot P_5 \cdot P_6 \cdot P_7\geq \frac{7}{32} e^{-26/16} \geq 0.0430\\
+	&S_8 \geq \frac{8}{16} \cdot P_1 \cdot P_4 \cdot P_5 \cdot P_6 \cdot P_7 \cdot P_8\geq \frac{8}{32} e^{-35/16} \geq 0.0280\\
+	&S_9 \geq \frac{9}{16} \cdot P_1 \cdot P_4 \cdot P_5 \cdot P_6 \cdot P_7 \cdot P_8 \cdot P_9\geq \frac{9}{32} e^{-45/16} \geq 0.0168\\
+      \end{align*}
+Συνολικά, έχουμε ότι
+      \begin{align*}
+	\sum_{k=1}^{2.5\sqrt{n}} \geq S_1 + S_4 + S_5 + S_6 + S_7 + S_8 + S_9\geq 0.6667 \geq \frac{2}{3}
+      \end{align*}
+Άρα, έχουμε ότι $\pr[r(v) > 2.5\sqrt{n}] < \frac{1}{3}$, το οποίο είναι και πιο ισχυρό από το ζητούμενο.
+
       %\begin{align*}
       %   \pr[r(v) < 10\sqrt{n}]
       %      &= \sum_{k=1}^{10\sqrt{n}} \frac{k}{n} \prod_{i=1}^{k-1} \left(1 -
