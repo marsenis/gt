@@ -1,0 +1,186 @@
+% --- To be compiled with XeLaTeX ---
+% ---      Encoding: UTF-8        ---
+
+\documentclass[a4paper, oneside, 11pt]{article}
+
+%fontspec package provides a configurable interface for font selection, and allows complex font choices to be named and later reused. It's needed for XeLaTeX
+\usepackage[cm-default]{fontspec}
+
+% Unicode support
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Default words and phrases in Greek (e.g. 'Περίληψη' instead of 'Abstract'). Also contains hyphenation rules for Greek Language
+\usepackage{xgreek}
+
+% Mathematical fonts, theorems etc.
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% Default page layout for consuming a larger portion of the page.
+\usepackage{fullpage}
+
+% Greek fonts (Computer Modern)
+\setmainfont[Mapping=tex-text]{CMU Serif}
+
+% Auxiliary commands
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newtheorem{thm}{Θεώρημα}
+\newtheorem{lm}[thm]{Λήμμα}
+\newtheorem{obsrv}[thm]{Παρατήρηση}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Ορισμός}
+
+\begin{document}
+
+\input{title.tex}
+
+\section{Χρωματισμοί κορυφών και ακμών}
+\begin{enumerate}
+   \item[1.6] \emph{Έστω $G$ γράφημα όπου $\Delta(G) \leq 3$. Δείξτε ότι το
+              $G$ είναι 4-ακμοχρωματίσιμο.}
+
+   Θα δείξουμε ότι γραμμικό γράφημα $L(G)$ του $G$ είναι 4 χρωματίσιμο.
+
+   \begin{lm}
+      \label{lm1.6.1}
+      Αν $K_4 \subseteq L(G)$ τότε $\Delta(G) \geq 4$.
+   \end{lm}
+   \begin{proof}
+      Έστω $e_1, e_2, e_3, e_4$ οι ακμές του $G$ που στο $L(G)$ είναι
+      κορυφές 4-κλίκας. Αυτό σημαίνει ότι κάθε ζεύγος $e_i, e_j$ θα πρέπει
+      να έχει κοινό άκρο.
+
+      Έστω $e_1 = \{u, v\}$ και χωρίς βλάβη της γενικότητας έστω
+      $e_2 = \{u, w\}$. Αν η $e_3$ έχει κοινό άκρο με την $e_1$
+      την κορυφή $v$, τότε αναγκαστικά $e_3 = \{v, w\}$ ώστε να έχει
+      κοινό άκρο και με την $e_3$. Σε αυτή την περίπτωση όμως η $e_4$
+      δεν μπορεί να έχει κοινό άκρο και με τις 3 προηγούμενες ακμές.
+
+      Άρα η $e_3$ έχει κοινό άκρο με την $e_1$ το $u$, δηλαδή
+      $e_3 = \{ u, x \}$ για κάποια κορυφή $x$ (διαφορετική από
+      τις $\{u, v, w\}$).
+
+      Τέλος, η $e_4$ θα πρέπει να έχει κοινό άκρο με όλες τις υπόλοιπες
+      και αυτό μπορεί να συμβεί μόνο αν $e_4 = \{u, y\}$ για κάποια
+      νέα κορυφή $y$.
+
+      Συνεπώς $\Delta(G) \geq d(u) = 4$.
+   \end{proof}
+
+   Εφόσον $\Delta(G) \leq 3$, από το Λήμμα \ref{lm1.6.1} έχουμε ότι
+   το $L(G)$ δεν μπορεί να περιέχει το $K_4$ ως υπογράφημα άρα δεν μπορεί
+   να το περιέχει και ως ελάσσον.
+
+   Από την εικασία του Handwinger για την περίπτωση $k=4$ (για το συγκεκριμένο
+   $k$ έχει αποδειχθεί ότι η εικασία ισχύει) έχουμε ότι $\chi(L(G)) < 4$
+   άρα μπορούμε να χρωματίσουμε τις ακμές του $G$ με 4 (ή λιγότερα)
+   χρώματα.
+
+   % TODO: Check the proof again. Edeiksa kati pio isxyro opote mporei
+   %       na exw kanei lathos.
+
+   \item[1.7] \emph{Δείξτε ότι υπάρχει $c$ τέτοιο ώστε κάθε ένωση δύο επίπεδων
+              γραφημάτων να έχει χρωματικό αριθμό το πολύ $c$.}
+   
+   \begin{lm}
+      \label{lm1.7.1}
+      Αν $G = G_1 \cup G_2$ τότε $\chi(G) \leq \chi(G_1) \cdot \chi(G_2)$.
+   \end{lm}
+   \begin{proof}
+      Έστω $\chi(G_1) = k, \chi(G_2) = l$
+      και $\chi_{G_1} : V(G_1) \rightarrow [k],
+      \chi_{G_2} : V(G_2) \rightarrow [l]$ οι συναρτήσεις
+      χρωματισμού του καθενός.
+      
+      Επεκτείνουμε τις παραπάνω συναρτήσεις ως εξής:
+      \[ \overline{\chi_{G_i}}(u) = \left\{
+         \begin{array}{cc}
+            \chi_{G_i}(u) & ,\ u \in V(G_i)\\
+            1 & , \text{ διαφορετικά}
+         \end{array}
+         \right.
+      \]
+
+      Ορίζουμε το σύνολο $S = \{ (x, y)\ |\ x \in A, y \in B \}$ και
+      χρωματίζουμε το $G$ με χρώματα από το $S$ ως εξής:
+
+      \[ \chi_G(u) = \left( \overline{\chi_{G_1}}(u),
+                     \overline{\chi_{G_2}}(u) \right) \]
+
+      Ο παραπάνω είναι έγκυρος χρωματισμός αφού αν $\chi_G(u) = \chi_G(v)$
+      τότε $\overline{\chi_{G_i}}(u) = \overline{\chi_{G_i}}(v)$
+      για $i = 1, 2$ επομένως $\{ u, v \} \notin E(G_i)$ και έτσι
+      $\{u, v\} \notin E(G)$.
+
+      Άρα $\chi(G) \leq |S| = \chi(G_1) \cdot \chi(G_2)$.
+   \end{proof}
+
+   Από το θεώρημα των 4 χρωμάτων έχουμε ότι αν $G_1, G_2$ επίπεδα γραφήματα
+   τότε $\chi(G_1), \chi(G_2) \leq 4$ επομένως από το Λήμμα \ref{lm1.7.1}:
+   $\chi(G_1 \cup G_2) \leq 16$.
+            
+\end{enumerate}
+
+\section{Διαπεράσεις}
+\begin{enumerate}
+   \item[2.1] \emph{$(\star)$ Για ποιά $k$ και $l$ το γράφημα
+              $G_{k, l} = P_l^{[k]}$ είναι Χαμιλτονιανό;}
+
+   Για $k = 1$, κανένα από τα $P_l$ με $l \geq 1$ δεν είναι Χαμιλτονιανό.
+
+   Για $k \geq 2$, θα δείξουμε ότι για κάθε $l \geq 1$ το
+   $P_l^{[k]}$ είναι Χαμιλτονιανό.
+
+   \begin{obsrv}
+      \label{lm2.1.1}
+      Το $P_l^{[2]} = P_l \times P_l$ είναι ισόμορφο με την
+      $(l+1, l+1)$-σχάρα η οποία είναι Χαμιλτονιανό γράφημα
+      για κάθε $l \geq 1$ (διαπερνάμε όλες τις κορυφές της πρώτης
+      στήλης από πάνω προς τα κάτω, της δεύτερης στήλης από κάτω
+      προς τα πάνω κ.ο.κ.).
+   \end{obsrv}
+
+   \begin{lm}
+      \label{lm2.1.2}
+      Αν $G$ είναι Χαμιλτονιανό τότε το $G \times P_k$ είναι επίσης
+      Χαμιλτονιανό.
+   \end{lm}
+   \begin{proof}
+      Το γράφημα $G \times P_k$ είναι ουσιαστικά το $G$ όπου κάθε κορυφή του
+      έχει αντικατασταθεί από ένα μονοπάτι $P_k$ (και έχουν προστεθεί οι
+      κατάλληλες ακμές μεταξύ κορυφών των μονοπατιών).
+
+      Ας πάρουμε ένα κύκλο Hamilton του $G$:
+      
+      \[ u_1 \rightarrow \ldots \rightarrow u_n \rightarrow u_1 \]
+
+      Αυτός μπορεί να μετασχηματιστεί απευθείας
+      σε κύκλο Hamilton του $G \times P_k$ ως εξής:
+      
+      \[ (u_1^1 \rightarrow \ldots \rightarrow u_1^k) \rightarrow
+         \ldots \rightarrow (u_n^1 \rightarrow \ldots
+         \rightarrow u_n^k) \rightarrow u_1^1 \]
+
+      όπου στο παραπάνω $u_i^j$ είναι η $j$-οστή κορυφή του μονοπατιού
+      το οποίο έχει αντικαταστήσει την κορυφή $u_i$ του $G$ στον
+      $G \times P_k$.
+   \end{proof}
+
+   Από το Λήμμα \ref{lm2.1.2} και την Παρατήρηση \ref{lm2.1.1} έχουμε
+   επαγωγικά ότι για κάθε $k \geq 2$ το $P_l^{[k]}$ είναι Χαμιλτονιανό
+   για οποιδήποτε $l \geq 1$.
+\end{enumerate}
+
+\section{Επίπεδα γραφήματα}
+\section{Τέλεια γραφήματα}
+\section{Μερικές διατάξεις}
+\section{$k$-δέντρα}
+\section{Άπειρα γραφήματα}
+\section{Κανονικά γραφήματα και Ταιριάσματα}
+\section{Διάφορα}
+
+\end{document}
