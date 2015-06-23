@@ -9,5 +9,5 @@ ex3.pdf: ex3.tex title.tex ../logos/pyrforos.png ../logos/uoa.png
 clean:
 	$(RM) *.aux *.log
 
-distclean:
+distclean: clean
 	$(RM) ex3.pdf

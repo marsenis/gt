@@ -9,5 +9,5 @@ ex2.pdf: ex2.tex title.tex pyrforos.png uoa.png
 clean:
 	$(RM) *.aux *.log
 
-distclean:
+distclean: clean
 	$(RM) ex2.pdf
